@@ -1,0 +1,19 @@
+{
+    "chooseLanguage": {
+      "heading": "Choose your Language",
+      "tagline": "Language won't be a barrier for your goals !",
+      "searchPlaceholder": "Search Language",
+      "continueButton": "Continue"
+    },
+    "loginScreen": {
+      "heading": "Log In",
+      "emailPlaceholder": "Your Email ID",
+      "passwordPlaceholder": "Password",
+      "forgotPassword": "Forgot Password?",
+      "loginButton": "Login",
+      "orLoginWith": "Or Login With",
+      "createAccount": "Don't Have an Account ?",
+      "createOne": "Create One!"
+    }
+  }
+  
