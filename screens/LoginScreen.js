@@ -5,6 +5,10 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 import { faGoogle, faFacebook, faApple } from '@fortawesome/free-brands-svg-icons';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { app } from '../firebaseConfig';
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -25,7 +29,7 @@ const LoginScreen = () => {
     navigation.navigate('Registration');
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     // Email validation
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const validEmail = emailRegex.test(email);
@@ -39,6 +43,18 @@ const LoginScreen = () => {
     }
   
     setLoadingError('');
+
+    try {
+      const auth = initializeAuth(app, {
+        persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+      });      
+      await signInWithEmailAndPassword(auth, email, password);
+      // Navigate to the desired screen upon successful login
+      navigation.navigate('Profile');
+    } catch (error) {
+      console.error('Login Error:', error);
+      Alert.alert('Login Failed', 'Invalid email or password. Please try again.');
+    }
   
     // Additional login logic goes here
   };

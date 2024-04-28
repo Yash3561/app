@@ -3,14 +3,22 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView, Plat
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 
+
+
 const RegisterScreen = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [number, setNumber] = useState('');
+
   const navigation = useNavigation();
 
-  const handleCreateAccount = () => {
+  const handleLogin = async () =>{
+    navigation.navigate('LoginScreen');
+  }
+  
+
+  const handleCreateAccount = async () => {
     // First Name Validation
     if (firstName.trim().length === 0 || firstName.trim().length > 20) {
       Alert.alert('Invalid First Name', 'First Name must be between 1 and 20 characters');
@@ -32,13 +40,12 @@ const RegisterScreen = () => {
 
     // Number Validation
     if (number.trim().length !== 10 || isNaN(number.trim())) {
-      Alert.alert('Invalid Number', 'Number must be exactly 10 digits long and contain only numbers');
+      Alert.alert('Invalid Phone Number', 'Number must be exactly 10 digits long and contain only numbers');
       return;
     }
 
-    // Logic for creating account goes here
-  };
-
+    navigation.navigate('SetPasswordScreen', { firstName, lastName, email, number });
+  }
   // Load fonts
   const [fontsLoaded, fontsError] = useFonts({
     'poppins': require('../assets/fonts/Poppins-Regular.ttf'),
@@ -108,7 +115,7 @@ const RegisterScreen = () => {
               <Text style={styles.buttonText}>Create Account</Text>
             </TouchableOpacity>
             <Text style={styles.termsText}>By creating an account or signing you agree to our <Text style={styles.termsAndConditions}>Terms and Conditions</Text></Text>
-            <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
+            <TouchableOpacity onPress={handleLogin}>
               <Text style={styles.loginText}>Already Have an account? <Text style={styles.boldText}>Login Here</Text></Text>
             </TouchableOpacity>
           </View>
