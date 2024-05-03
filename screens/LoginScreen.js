@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView, Platform, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView, Platform,Alert, KeyboardAvoidingView } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 import { faGoogle, faFacebook, faApple } from '@fortawesome/free-brands-svg-icons';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { app } from '../firebaseConfig';
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
-import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirebaseApp } from '../firebaseConfig';
+
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -45,9 +44,8 @@ const LoginScreen = () => {
     setLoadingError('');
 
     try {
-      const auth = initializeAuth(app, {
-        persistence: getReactNativePersistence(ReactNativeAsyncStorage)
-      });      
+      const app = getFirebaseApp(); // Get Firebase app instance
+      const auth = getAuth(app);
       await signInWithEmailAndPassword(auth, email, password);
       // Navigate to the desired screen upon successful login
       navigation.navigate('Profile');

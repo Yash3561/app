@@ -1,19 +1,25 @@
 {
-    "chooseLanguage": {
-      "heading": "Choose your Language",
-      "tagline": "Language won't be a barrier for your goals !",
-      "searchPlaceholder": "Search Language",
-      "continueButton": "Continue"
-    },
     "loginScreen": {
-      "heading": "Log In",
+      "welcome": "Welcome",
+      "chooseLanguage": "Choose your Language",
+      "login": "Login",
+      "forgotPassword": "Forgot Password",
+      "registration": "Registration",
+      "forgotPhone": "Forgot Phone",
+      "forgotEmail": "Forgot Email",
+      "otpVerification": "OTP Verification",
+      "profile": "Profile",
+      "setPassword": "Set Password",
+      "email": "Email",
       "emailPlaceholder": "Your Email ID",
+      "password": "Password",
       "passwordPlaceholder": "Password",
-      "forgotPassword": "Forgot Password?",
-      "loginButton": "Login",
-      "orLoginWith": "Or Login With",
-      "createAccount": "Don't Have an Account ?",
+      "validCredentials": "Please enter valid credentials",
+      "loginFailedTitle": "Login Failed",
+      "loginFailedMessage": "Invalid email or password. Please try again.",
+      "forgotPasswordButtonText": "Forgot Password ?",
+      "or": "Or Login With",
+      "noAccount": "Don't Have an Account ? ",
       "createOne": "Create One!"
     }
   }
-  

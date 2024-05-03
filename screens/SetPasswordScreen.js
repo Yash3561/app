@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import { doc, setDoc, getFirestore } from 'firebase/firestore';
-import { app } from '../firebaseConfig';
+import { getFirebaseApp } from '../firebaseConfig';
 import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
@@ -42,6 +42,7 @@ const SetPasswordScreen = ({ route }) => {
 
     try {
       // Create user with email and password
+      const app = getFirebaseApp();
       const auth = initializeAuth(app, {
         persistence: getReactNativePersistence(ReactNativeAsyncStorage)
       });
@@ -58,7 +59,7 @@ const SetPasswordScreen = ({ route }) => {
       });
 
       // Navigate to the Profile screen
-      navigation.navigate('Profile');
+      navigation.navigate('OTPVerification');
     } catch (error) {
       console.error('Firebase Error:', error);
       Alert.alert('Error', 'An error occurred. Please try again later.');

@@ -12,26 +12,7 @@ import ForgotEmail from './screens/ForgotEmail';
 import ForgotPhone from './screens/ForgotPhone';
 import Profile from './screens/Profile';
 import SetPasswordScreen from  './screens/SetPasswordScreen';
-import OTPVerification from './screens/OTPverification';
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCbEx0PgYPK_oTwaFWcIeFCeTH_fVn9FCc",
-  authDomain: "myapp-56477.firebaseapp.com",
-  projectId: "myapp-56477",
-  storageBucket: "myapp-56477.appspot.com",
-  messagingSenderId: "117189577563",
-  appId: "1:117189577563:web:c22dbadff1a0b08be9e87e",
-  measurementId: "G-7RJWVXWCNL"
-};
-
-
-
+import OTPVerification from './screens/OTPVerification';
 
 const fetchFonts = async () => {
   await Font.loadAsync({
@@ -46,7 +27,7 @@ StatusBar.setBackgroundColor('#121212');
 
 const Stack = createStackNavigator();
 
-export default function AppContainer() { // Rename the function to avoid duplication
+export default function AppContainer() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -59,61 +40,86 @@ export default function AppContainer() { // Rename the function to avoid duplica
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+          gestureEnabled: true,
+          gestureDirection: 'horizontal',
+          cardStyleInterpolator: ({ current, next, layouts }) => ({
+            cardStyle: {
+              transform: [
+                {
+                  translateX: current.progress.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [layouts.screen.width, 0],
+                  }),
+                },
+                {
+                  translateX: next
+                    ? next.progress.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -layouts.screen.width],
+                      })
+                    : 1,
+                },
+              ],
+            },
+            overlayStyle: {
+              opacity: current.progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, 0.5],
+              }),
+            },
+          }),
+          transitionSpec: {
+            open: { animation: 'timing', config: { duration: 400 } }, // Adjust duration here
+            close: { animation: 'timing', config: { duration: 400 } }, // Adjust duration here
+          },
+        }}
+      >
         {isLoading ? (
           <Stack.Screen
             name="Splash"
             component={SplashScreen}
-            options={{ headerShown: false }}
           />
         ) : (
           <>
             <Stack.Screen
               name="ChooseLanguage"
               component={ChooseLanguage}
-              options={{ headerShown: false }}
             />
-             <Stack.Screen
+            <Stack.Screen
               name="LoginScreen"
               component={LoginScreen}
-              options={{ headerShown: false }}
             /> 
             <Stack.Screen
               name="ForgotPassword"
               component={ForgotPassword}
-              options={{ headerShown: false }}
             /> 
             <Stack.Screen
               name="Registration"
               component={Registration}
-              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="ForgotPhone"
               component={ForgotPhone}
-              options={{ headerShown: false }}
             /> 
             <Stack.Screen
               name="ForgotEmail"
               component={ForgotEmail}
-              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="OTPVerification"
               component={OTPVerification}
-              options={{ headerShown: false }}
             /> 
             <Stack.Screen
               name="Profile"
               component={Profile}
-              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="SetPasswordScreen"
               component={SetPasswordScreen}
-              options={{ headerShown: false }}
             />
-            {/* Add more screens as needed */}
           </>
         )}
       </Stack.Navigator>

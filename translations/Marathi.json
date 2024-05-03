@@ -1,0 +1,26 @@
+{
+    "loginScreen":{
+        "welcome": "स्वागत आहे",
+        "chooseLanguage": "तुमची भाषा निवडा",
+        "login": "लॉगिन",
+        "forgotPassword": "पासवर्ड विसरलात",
+        "registration": "नोंदणी",
+        "forgotPhone": "फोन विसरला",
+        "forgotEmail": "ईमेल विसरला",
+        "otpVerification": "OTP सत्यापन",
+        "profile": "प्रोफाइल",
+        "setPassword": "पासवर्ड सेट करा",
+        "email": "ईमेल",
+        "emailPlaceholder": "तुमचा ईमेल आयडी",
+        "password": "पासवर्ड",
+        "passwordPlaceholder": "पासवर्ड",
+        "validCredentials": "कृपया वैध खाते तपासा",
+        "loginFailedTitle": "लॉगिन अयशस्वी",
+        "loginFailedMessage": "अयशस्वी लॉगिन, कृपया पुन्हा प्रयत्न करा.",
+        "forgotPasswordButtonText": "पासवर्ड विसरलात ?",
+        "or": "किंवा सोशल मीडिया साथीतून लॉगिन करा",
+        "noAccount": "खाते नाही ? ",
+        "createOne": "एक तयार करा!"
+      }
+      
+}

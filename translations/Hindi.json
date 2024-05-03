@@ -1,19 +1,25 @@
 {
-    "chooseLanguage": {
-      "heading": "अपनी भाषा चुनें",
-      "tagline": "भाषा आपके लक्ष्यों के लिए बाधा नहीं होगी!",
-      "searchPlaceholder": "भाषा खोजें",
-      "continueButton": "जारी रखें"
-    },
     "loginScreen": {
-      "heading": "लॉग इन करें",
-      "emailPlaceholder": "आपका ईमेल आईडी",
-      "passwordPlaceholder": "पासवर्ड",
-      "forgotPassword": "पासवर्ड भूल गए?",
-      "loginButton": "लॉगिन",
-      "orLoginWith": "या इसके साथ लॉगिन करें",
-      "createAccount": "खाता नहीं है?",
-      "createOne": "बनाएं!"
+        "welcome": "स्वागत हे",
+        "chooseLanguage": "अपनी भाषा चुनें",
+        "login": "लॉगिन",
+        "forgotPassword": "पासवर्ड भूल गए",
+        "registration": "पंजीकरण",
+        "forgotPhone": "फोन भूल गए",
+        "forgotEmail": "ईमेल भूल गए",
+        "otpVerification": "OTP सत्यापन",
+        "profile": "प्रोफ़ाइल",
+        "setPassword": "पासवर्ड सेट करें",
+        "email": "ईमेल",
+        "emailPlaceholder": "आपका ईमेल आईडी",
+        "password": "पासवर्ड",
+        "passwordPlaceholder": "पासवर्ड",
+        "validCredentials": "कृपया वैध क्रेडेंशियल दर्ज करें",
+        "loginFailedTitle": "लॉगिन विफल हुआ",
+        "loginFailedMessage": "अमान्य ईमेल या पासवर्ड। कृपया पुनः प्रयास करें।",
+        "forgotPasswordButtonText": "पासवर्ड भूल गए ?",
+        "or": "या सोशल मीडिया से लॉगिन करें",
+        "noAccount": "खाता नहीं है ? ",
+        "createOne": "एक बनाएं!"
     }
   }
-  
