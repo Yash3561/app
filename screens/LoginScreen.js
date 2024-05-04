@@ -5,9 +5,8 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useFonts } from 'expo-font';
 import { useNavigation } from '@react-navigation/native';
 import { faGoogle, faFacebook, faApple } from '@fortawesome/free-brands-svg-icons';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirebaseApp } from '../firebaseConfig';
-
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../App';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -44,8 +43,6 @@ const LoginScreen = () => {
     setLoadingError('');
 
     try {
-      const app = getFirebaseApp(); // Get Firebase app instance
-      const auth = getAuth(app);
       await signInWithEmailAndPassword(auth, email, password);
       // Navigate to the desired screen upon successful login
       navigation.navigate('Profile');

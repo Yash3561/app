@@ -13,6 +13,24 @@ import ForgotPhone from './screens/ForgotPhone';
 import Profile from './screens/Profile';
 import SetPasswordScreen from  './screens/SetPasswordScreen';
 import OTPVerification from './screens/OTPVerification';
+import { initializeApp } from 'firebase/app';
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+import { getAuth, getReactNativePersistence } from 'firebase/auth';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCbEx0PgYPK_oTwaFWcIeFCeTH_fVn9FCc",
+  authDomain: "myapp-56477.firebaseapp.com",
+  projectId: "myapp-56477",
+  storageBucket: "myapp-56477.appspot.com",
+  messagingSenderId: "117189577563",
+  appId: "1:117189577563:web:c22dbadff1a0b08be9e87e",
+  measurementId: "G-7RJWVXWCNL"
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp, {
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage)
+});
 
 const fetchFonts = async () => {
   await Font.loadAsync({
@@ -126,3 +144,5 @@ export default function AppContainer() {
     </NavigationContainer>
   );
 }
+
+export { auth }; // Export auth for use in other components
